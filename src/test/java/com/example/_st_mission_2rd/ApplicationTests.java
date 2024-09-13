@@ -19,7 +19,7 @@ class ApplicationTests {
 	void contextLoads() {
 		Article article = new Article();
 		article.setTitle("테스트용 제목");
-		article.setContent("트스트용 내용");
+		article.setContent("테스트용 내용");
 		article.setCreateDate(LocalDateTime.now());
 		this.articleRepository.save(article);
 	}
