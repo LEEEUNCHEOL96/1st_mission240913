@@ -1,10 +1,13 @@
 package com.example._st_mission_2rd.Article;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -30,5 +33,20 @@ public class ArticleController {
         model.addAttribute("article", article);
 
         return "article_detail";
+    }
+
+    @GetMapping("/create")
+    public String create(){
+
+        return "article_form";
+    }
+
+    @PostMapping
+    public String articleCreate(ArticleForm articleForm ,@Valid BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "article_form";
+        }
+        this.articleService.create(articleForm.getTitle(),articleForm.getTitle());
+        return "redirect:/article/list";
     }
 }
