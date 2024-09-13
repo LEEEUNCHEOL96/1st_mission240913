@@ -36,13 +36,13 @@ public class ArticleController {
     }
 
     @GetMapping("/create")
-    public String create(){
+    public String create(ArticleForm articleForm){
 
         return "article_form";
     }
 
-    @PostMapping
-    public String articleCreate(ArticleForm articleForm ,@Valid BindingResult bindingResult) {
+    @PostMapping("/create")
+    public String articleCreate(@Valid ArticleForm articleForm , BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return "article_form";
         }
