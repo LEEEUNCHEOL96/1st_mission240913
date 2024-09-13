@@ -12,19 +12,19 @@ import java.util.Optional;
 public class ArticleService {
     private ArticleRepository articleRepository;
 
-    public List<Article> getList(){
+    public List<Article> getList() {
         return this.articleRepository.findAll();
     }
 
-    public Article getArticle(Integer id){
+    public Article getArticle(Integer id) {
         Optional<Article> optionalArticle = this.articleRepository.findById(id);
-        if(optionalArticle.isEmpty()){
+        if (optionalArticle.isEmpty()) {
             return null;
         }
         return optionalArticle.get();
     }
 
-    public void create(String title, String content){
+    public void create(String title, String content) {
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
